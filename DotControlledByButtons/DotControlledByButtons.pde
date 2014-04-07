@@ -1,6 +1,8 @@
 #include <MeggyJrSimple.h>    // Required code, line 1 of 2.
 int xcoord = 0;    // Tracks the dot's x-coordinates.
 int ycoord = 0;    // Tracks the dot's y-coordinates.
+int appleX = random (8);    //Creates the apple on random x-coordinate.
+int appleY = random (8);    //Creates the apple on random y-coordinate.
 
 void setup()                    // run once, when the sketch starts
 {
@@ -42,6 +44,7 @@ void loop()                     // run over and over again
     ClearSlate();
     DrawPx(xcoord,ycoord,Blue);
   }
+  
    
   if (Button_Right)      
   {
@@ -74,8 +77,25 @@ void loop()                     // run over and over again
     ClearSlate();
     DrawPx(xcoord,ycoord,Blue);
   }
-
+  
+  if (xcoord == appleX && ycoord == appleY)
+    {
+      ClearSlate();
+      delay(50);
+      do
+        {
+          appleX = random(8);
+        }
+      while (xcoord = appleY);
+      do {
+          appleY = random(8);
+         }
+      while (ycoord == appleY);
+      DrawPx(appleX, appleY, Red);
+          
   DisplaySlate();      // Write the updated game buffer to the screen.
   delay(30);          // Wait 30 ms
+  
 }        //End void loop
+
 
